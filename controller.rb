@@ -7,17 +7,24 @@ also_reload('./models/*')
 get '/rock/:play' do
   opp_move = params[:play]
   game = Game.new()
-  game.play_against_rock(opp_move)
+  @result = game.play_against_rock(opp_move)
+  erb(:result)
 end
 
 get '/scissor/:play' do
  opp_move = params[:play]
  game = Game.new()
- game.play_against_scissor(opp_move)
+ @result = game.play_against_scissor(opp_move)
+ erb(:result)
 end
 
 get '/paper/:play' do
   opp_move = params[:play]
   game = Game.new()
-  game.play_against_paper(opp_move)
+  @result = game.play_against_paper(opp_move)
+  erb(:result)
+end
+
+get '/' do
+  erb(:rules)
 end
